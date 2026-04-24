@@ -22,4 +22,22 @@ CREATE TABLE IF NOT EXISTS usuarios(
     nome varchar (100) default "anonimo"
 );
 
+CREATE TABLE IF NOT EXISTS carrinho(
+	cod_carrinho int auto_increment primary key,
+    usuario varchar (20),
+    data datetime default current_timestamp(),
+    finalizado bool,
+    constraint fk_carrinho_usuario foreign key (usuario) references usuarios(usuario)
+    );
+    
+
+CREATE TABLE IF NOT EXISTS item_carrinhos(
+	cod_item_carrinho int auto_increment primary key,
+    cod_carrinho int,
+    cod_produto int,
+    quantidade int default 1,
+    CONSTRAINT fk_itensCarrinho_carrinhos FOREIGN KEY (cod_carrinho) REFERENCES carrinhos(cod_carrinho),
+    CONSTRAINT fk_itensCarrinho_itens FOREIGN KEY (cod_produto) REFERENCES itens(codigo)
+);
+
 SELECT * from usuarios;
