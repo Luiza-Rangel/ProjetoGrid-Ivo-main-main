@@ -15,6 +15,6 @@ def recuperar_carrinho(usuario: str) -> list:
     INNER JOIN itens ON itens.codigo = itens_carrinho.cod_produto
     WHERE usuarios.usuario = "Godofredo";
                     """)
-    recuperar = cursor.fetchall()
+    resultado = cursor.fetchall()
     conexao.close()
-    return recuperar
+    return resultado
